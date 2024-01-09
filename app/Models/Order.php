@@ -23,6 +23,10 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Order whereUpdatedAt($value)
+ * @property-read mixed $total
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrderItem> $orderItems
+ * @property-read int|null $order_items_count
+ * @method static \Database\Factories\OrderFactory factory($count = null, $state = [])
  * @mixin \Eloquent
  */
 class Order extends Model
@@ -39,5 +43,10 @@ class Order extends Model
         return $this->orderItems->sum(function(OrderItem $item){
             return $item->price * $item->quantity;
         });
+    }
+
+    public function getAttributeName()
+    {
+        return $this->first_name.' '.$this->last_name;
     }
 }

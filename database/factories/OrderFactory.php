@@ -20,6 +20,7 @@ class OrderFactory extends Factory
             'first_name' => fake()->name(),
             'last_name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
+            'created_at' => fake()->dateTime(),
         ];
     }
 }
