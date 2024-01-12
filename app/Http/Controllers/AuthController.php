@@ -45,9 +45,9 @@ class AuthController extends Controller
             'first_name' => $request->input('first_name'),
             'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
+            'password' => Hash::make($request->input('password')),
+            'role_id' => 3
         ]);
-
-        return response(['user' => $user, 'message' => 'User Created Successfully!!'], 201);
+        return response(['user' => $user, 'message' => 'User Created Successfully!!'], Response::HTTP_CREATED);
     }
 }
